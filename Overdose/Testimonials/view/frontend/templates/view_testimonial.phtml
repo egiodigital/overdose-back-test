@@ -1,0 +1,88 @@
+<?php
+/**
+ * Copyright © 2021 Overdose_Testimonials. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Overdose\Testimonials\Block\Testimonials
+ */
+
+$data = $block->getTestimonials();
+?>
+
+<div class="testimonial-form">
+    <form action="<?= $block->escapeUrl($block->getFormAction()); ?>"
+          id="testimonial-form"
+          class="testimonial-form"
+          method="post"
+          data-hasrequired="<?php echo $block->escapeHtml(__('* Required Fields')) ?>"
+          enctype="multipart/form-data">
+        <fieldset class="fieldset">
+            <div class="field testimonial-title required">
+                <label class="label"><?php echo $block->escapeHtml(__('Title')) ?></label>
+                <input
+                    type="text"
+                    name="title"
+                    id="testimonial-name"
+                    title="<?php echo $block->escapeHtml(__('Title')) ?>"
+                    class="input-text"
+                    data-validate="{required:true}">
+            </div>
+            <div class="field testimonial-image">
+                <label class="label" for="image"><?php echo $block->escapeHtml(__('Image')) ?></span></label>
+                <input name="image" id="image" title="<?php echo $block->escapeHtml(__('Image')) ?>" type="file" />
+            </div>
+            <div class="field testimonial-message required">
+                <label class="label"><?php echo $block->escapeHtml(__('Message')) ?></label>
+                <textarea
+                    class="validate-length maximum-length-150"
+                    rows="4"
+                    name="message"
+                    id="testimonial"
+                    title="<?php echo $block->escapeHtml(__('Message')) ?>"
+                    data-validate="{required:true}"></textarea>
+            </div>
+            <div class="btn-actions">
+                <button
+                    class="action primary"
+                    title="<?php echo $block->escapeHtml(__('Add New Testimonial')) ?>"
+                    type="submit">
+                    <?php echo $block->escapeHtml(__('Add New Testimonial')) ?>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<?php if (count($data) > 0): ?>
+    <div class="over-testimonials-list">
+        <div class="over-testimonial-title">
+            <h1><?php echo $block->escapeHtml(__('Testimonials')) ?></h1>
+        </div>
+        <div class="testimonials-list">
+            <div class="row">
+                <?php foreach ($data as $item): ?>
+                    <div class="col-md-3 over-testimonials-detail">
+                        <?php if ($item['image']): ?>
+                            <div class="over-avatar" >
+                                <img
+                                    src = "<?php echo  $block->getAvatar($item['image']) ?>"
+                                    class = "img-thumbnail"
+                                    alt = "<?php echo $block->escapeHtml($item['title']); ?>"
+                                >
+                            </div>
+                        <?php endif; ?>
+                        <div class="over-testimonials-title">
+                            <span class="bold-text"><?php echo $block->escapeHtml($item['title']); ?></span>
+                        </div>
+                        <p class="testimonial-message" >
+                            <?php echo $block->escapeHtml($item['message']); ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+

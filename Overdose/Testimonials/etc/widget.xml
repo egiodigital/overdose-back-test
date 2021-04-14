@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2021 Overdose_Testimonials. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Overdose\Testimonials\Block\Testimonials" id="Overdose_testimonials_widget">
+        <label>Testimonials</label>
+        <description>Overdose Testimonials Widget</description>
+    </widget>
+</widgets>

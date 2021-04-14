@@ -1,0 +1,21 @@
+.testimonial-form {
+    padding: 35px 15px;
+}
+
+.over-testimonial-title h1 {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.btn-actions {
+    text-align: center;
+    padding: 20px 10px
+}
+
+.over-testimonials-list {
+    padding: 10px 45px;
+}
+
+.over-testimonials-detail {
+    text-align: center;
+}
